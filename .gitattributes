@@ -1,0 +1,17 @@
+# 源码统一用 LF 检出；Windows 脚本保留 CRLF，避免 cmd 解析异常
+* text=auto
+
+*.go   text eol=lf
+*.sh   text eol=lf
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.md   text eol=lf
+*.json text eol=lf
+
+*.ps1  text eol=crlf
+*.bat  text eol=crlf
+
+*.exe  binary
+*.ico  binary
+*.png  binary

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>G PROXY · Antigravity 网关</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="shell">
+
+  <header class="head">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div class="brand-text">
+        <h1>G PROXY</h1>
+        <p>Antigravity 网关</p>
+      </div>
+    </div>
+    <button class="close" id="closeBtn" aria-label="退出">✕</button>
+  </header>
+
+  <section class="card status" id="statusCard">
+    <div class="status-main">
+      <span class="dot" id="statusDot"></span>
+      <div class="status-text">
+        <h2 id="statusTitle">正在建立链路</h2>
+        <p id="statusDetail">首批探测进行中</p>
+      </div>
+    </div>
+    <button class="tick" id="statusTick" aria-label="启动">✓</button>
+  </section>
+
+  <div class="banner" id="banner"></div>
+
+  <section class="card traffic">
+    <div class="row-head">
+      <div class="label"><span class="ico">⇅</span>Antigravity 流量</div>
+      <div class="pill"><i></i><span id="monitorPill">监控中</span></div>
+    </div>
+    <div class="traffic-grid">
+      <div class="metric">
+        <div class="sub"><span class="arrow">↓</span>下载</div>
+        <div class="value" id="downTotal">0 B</div>
+        <div class="rate" id="downRate">0 B/s</div>
+      </div>
+      <div class="metric">
+        <div class="sub"><span class="arrow">↑</span>上传</div>
+        <div class="value" id="upTotal">0 B</div>
+        <div class="rate" id="upRate">0 B/s</div>
+      </div>
+    </div>
+    <div class="foot">本次监控累计 · TCP/UDP</div>
+  </section>
+
+  <div class="split">
+    <section class="card stat">
+      <div class="label"><span class="ico">◔</span>平均延迟</div>
+      <div class="stat-row">
+        <div class="value" id="avgLatency">–</div>
+        <div class="hint">出口探测</div>
+      </div>
+    </section>
+    <section class="card stat">
+      <div class="label"><span class="ico">◎</span>出口成功率</div>
+      <div class="stat-row">
+        <div class="value" id="successRate">–</div>
+        <div class="hint" id="successCount">0/0 次</div>
+      </div>
+    </section>
+  </div>
+
+  <section class="card trend">
+    <div class="row-head">
+      <div class="label"><span class="ico">⌇</span>延迟趋势</div>
+      <div class="hint">最近 24 次</div>
+    </div>
+    <div class="bars" id="bars"></div>
+  </section>
+
+  <section class="card exit">
+    <div class="label plain">出口节点</div>
+    <div class="exit-row">
+      <span class="globe">◍</span>
+      <div class="exit-text">
+        <div class="exit-ip"><span id="exitIP">—</span><span class="exit-geo" id="exitGeo"></span></div>
+        <div class="exit-org" id="exitOrg">等待出口探测</div>
+      </div>
+      <span class="tick small" id="exitTick">✓</span>
+    </div>
+  </section>
+
+  <section class="card upstream">
+    <div class="row-head">
+      <div class="label"><span class="ico">⇄</span>上游代理</div>
+      <button class="link" id="upToggle">更换</button>
+    </div>
+    <div class="up-row">
+      <span class="badge" id="upKind">HTTP</span>
+      <span class="up-addr" id="upAddr">—</span>
+      <span class="up-source" id="upSource"></span>
+    </div>
+    <div class="up-panel" id="upPanel" hidden>
+      <div class="scan-head">
+        <span class="hint" id="scanHint">正在扫描本机代理…</span>
+        <button class="link" id="scanBtn">重新扫描</button>
+      </div>
+      <ul class="scan-list" id="scanList"></ul>
+      <div class="manual">
+        <select id="upManualKind">
+          <option value="http">HTTP</option>
+          <option value="socks5">SOCKS5</option>
+        </select>
+        <input id="upManualAddr" placeholder="127.0.0.1:7890" spellcheck="false" autocomplete="off">
+        <button class="primary" id="upApply">应用</button>
+      </div>
+      <div class="up-actions">
+        <button class="link" id="upDirect">切换为直连</button>
+      </div>
+      <div class="up-error" id="upError"></div>
+    </div>
+  </section>
+
+  <section class="card google">
+    <div class="row-head">
+      <div class="label"><span class="ico">✳</span>Google API</div>
+      <div class="hint" id="googleHint">每 5 轮刷新</div>
+    </div>
+    <ul id="googleList"></ul>
+  </section>
+
+  <footer class="foot-bar">
+    <span class="proxy" id="proxyAddr">http://127.0.0.1:10909</span>
+    <span class="updated" id="updatedAt">—</span>
+  </footer>
+
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

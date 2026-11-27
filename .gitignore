@@ -1,0 +1,24 @@
+# 构建产物
+/dist/
+*.exe
+*.ico
+
+# 运行时状态（包含本机路径与端口，不入库）
+ui-profile/
+state.json
+run.log
+*.log
+
+# 本地工具 / 会话缓存
+.codely/
+.codely-cli/
+
+# 截图调试产物
+shot.png
+ico-check.png
+icon-preview.png
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
